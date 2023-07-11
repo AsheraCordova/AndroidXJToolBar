@@ -5,6 +5,7 @@ import r.android.view.MenuItem;
 import r.android.view.View;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 public class MenuBuilder {
   private static final int[] sCategoryToOrder=new int[]{1,4,5,3,2,0};
   private final Resources mResources;
@@ -176,7 +177,5 @@ public class MenuBuilder {
 interface SupportMenuItem extends MenuItem {
   }
 class ContextMenu {
-  }
-class CopyOnWriteArrayList<T> extends ArrayList<T> {
   }
 }

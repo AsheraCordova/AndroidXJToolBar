@@ -65,7 +65,7 @@ class ActionMenuPresenter extends BaseMenuPresenter {
         hasOverflow=count > 0;
       }
     }
-    if (hasOverflow) {
+    if (!hasOverflow && mOverflowButton != null) {mOverflowButton.setVisibility(View.INVISIBLE);}if (hasOverflow) {
       if (mOverflowButton == null) {
         mOverflowButton=mMenuView.getOverFlowButton();//mOverflowButton=new OverflowMenuButton(mSystemContext);
       }
