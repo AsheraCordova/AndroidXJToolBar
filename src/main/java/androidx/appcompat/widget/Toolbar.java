@@ -674,4 +674,7 @@ mGravity=gravity;
 public void setMaxButtonHeight(int height){
 mMaxButtonHeight=height;
 }
+public androidx.appcompat.view.menu.MenuBuilder getMenu(){
+return ((androidx.appcompat.widget.ActionMenuView)mMenuView).getMenu();
+}
 }

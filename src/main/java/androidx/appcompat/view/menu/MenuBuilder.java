@@ -72,6 +72,12 @@ public class MenuBuilder {
     mItems.clear();
     onItemsChanged(true);
   }
+  public int size(){
+    return mItems.size();
+  }
+  public MenuItem getItem(  int index){
+    return mItems.get(index);
+  }
   private static int getOrdering(  int categoryOrder){
     final int index=(categoryOrder & CATEGORY_MASK) >> CATEGORY_SHIFT;
     if (index < 0 || index >= sCategoryToOrder.length) {

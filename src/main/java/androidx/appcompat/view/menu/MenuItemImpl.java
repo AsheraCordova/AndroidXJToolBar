@@ -4,7 +4,7 @@ import r.android.graphics.drawable.Drawable;
 import r.android.view.MenuItem;
 import r.android.view.View;
 import r.android.widget.LinearLayout;
-public final class MenuItemImpl implements MenuItem {
+public final class MenuItemImpl implements SupportMenuItem {
   private static final int SHOW_AS_ACTION_MASK=SHOW_AS_ACTION_NEVER | SHOW_AS_ACTION_IF_ROOM | SHOW_AS_ACTION_ALWAYS;
   private final int mId;
   private final int mGroup;
@@ -101,6 +101,15 @@ default :
 }
 mShowAsAction=actionEnum;
 mMenu.onItemActionRequestChanged(this);
+}
+public SupportMenuItem setActionView(View view){
+mActionView=view;
+mActionProvider=null;
+if (view != null && view.getId() == View.NO_ID && mId > 0) {
+  view.setId(mId);
+}
+mMenu.onItemActionRequestChanged(this);
+return this;
 }
 public View getActionView(){
 if (mActionView != null) {
