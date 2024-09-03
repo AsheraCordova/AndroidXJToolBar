@@ -65,9 +65,9 @@ class ActionMenuPresenter extends BaseMenuPresenter {
         hasOverflow=count > 0;
       }
     }
-    if (!hasOverflow && mOverflowButton != null) {mOverflowButton.setVisibility(View.INVISIBLE);}if (hasOverflow) {
+    if (!hasOverflow && mOverflowButton != null) {mOverflowButton.setVisibility(View.INVISIBLE);}if (hasOverflow && mOverflowButton != null) {mOverflowButton.setVisibility(View.VISIBLE);}if (hasOverflow) {
       if (mOverflowButton == null) {
-        mOverflowButton=mMenuView.getOverFlowButton();//mOverflowButton=new OverflowMenuButton(mSystemContext);
+        mOverflowButton=((androidx.appcompat.widget.ActionMenuView)mMenuView).getOverFlowButton();//mOverflowButton=new OverflowMenuButton(mSystemContext);
       }
       ViewGroup parent=(ViewGroup)mOverflowButton.getParent();
       if (parent != mMenuView) {
@@ -212,6 +212,13 @@ class ActionMenuPresenter extends BaseMenuPresenter {
     mMinCellSize=(int)(ActionMenuView.MIN_CELL_SIZE);
     mMaxItems=getMaxActionButtons();
   }
+  public View getItemView(  View parent,  MenuItemImpl item){
+    final androidx.appcompat.widget.ActionMenuView menuParent=(androidx.appcompat.widget.ActionMenuView)parent;
+    return menuParent.getItemView(item);
+  }
+  public boolean isMenuItemView(  View convertView){
+    return androidx.appcompat.widget.ActionMenuView.isActionMenuItemView(convertView);
+  }
   public int getMaxActionButtons(){
     int widthDp=com.ashera.widget.PluginInvoker.getScreenWidthDp();
     int heightDp=com.ashera.widget.PluginInvoker.getScreenHeightDp();
@@ -230,7 +237,7 @@ class ActionMenuPresenter extends BaseMenuPresenter {
     int width=mWidthLimit;
     if (mReserveOverflow) {
       if (mOverflowButton == null) {
-        mOverflowButton=mMenuView.getOverFlowButton();
+        mOverflowButton=((androidx.appcompat.widget.ActionMenuView)mMenuView).getOverFlowButton();
         final int spec=MeasureSpec.makeMeasureSpec(0,MeasureSpec.UNSPECIFIED);
         mOverflowButton.measure(spec,spec);
       }
@@ -250,4 +257,6 @@ class ActionProvider {
     }
   }
   private View mOverflowButton;
+  public void initForMenu(  r.android.content.Context menuContext,  androidx.appcompat.view.menu.MenuBuilder menuBuilder){
+  }
 }

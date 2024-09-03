@@ -677,4 +677,19 @@ mMaxButtonHeight=height;
 public androidx.appcompat.view.menu.MenuBuilder getMenu(){
 return ((androidx.appcompat.widget.ActionMenuView)mMenuView).getMenu();
 }
+@Override public void requestLayout(){
+super.requestLayout();
+if (mMenuView != null) {
+int menuSize=getMenu().size();
+for (int i=0; i < menuSize; i++) {
+MenuItem menu=getMenu().getItem(i);
+if (((androidx.appcompat.widget.ActionMenuView)mMenuView).hasItemView(menu)) {
+View itemView=((androidx.appcompat.widget.ActionMenuView)mMenuView).getItemView(menu);
+if (itemView.getParent() != null) {
+itemView.requestLayout();
+}
+}
+}
+}
+}
 }

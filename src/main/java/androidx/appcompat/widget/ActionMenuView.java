@@ -379,6 +379,9 @@ public static class LayoutParams extends LinearLayoutCompat.LayoutParams {
   public void updateMenuView(){
     mPresenter.updateMenuView(true);
   }
+  public boolean hasItemView(  r.android.view.MenuItem item){
+    return false;
+  }
   public View getItemView(  r.android.view.MenuItem item){
     return null;
   }
