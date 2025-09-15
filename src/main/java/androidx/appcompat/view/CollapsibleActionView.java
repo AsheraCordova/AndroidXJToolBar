@@ -27,7 +27,7 @@ package androidx.appcompat.view;
  * @deprecated Use the platform-provided {@link r.android.view.CollapsibleActionView} interface.
  */
 @SuppressWarnings("deprecation")
-@Deprecated
+//@Deprecated
 public interface CollapsibleActionView {
 
     /**
